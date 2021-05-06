@@ -31,7 +31,6 @@
 			</plugin>
         </plugins>
 	</build>
-	<sonar.host.url>https://sonar.my-internal-company-domain.net</127.0.0.1>
 
 	<dependencies>
 
