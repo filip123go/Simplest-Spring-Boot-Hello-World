@@ -1,7 +1,6 @@
 pipeline {
     agent any
         environment {
-         echo 'Setting up environment variables'
             MAVEN_OPTS = '-Dhttps.protocols=TLSv1.2'
         }
     stages {
