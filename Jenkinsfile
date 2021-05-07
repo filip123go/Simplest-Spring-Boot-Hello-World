@@ -7,6 +7,7 @@ pipeline {
         stage("build") {
             steps {
                 echo 'building the application...'
+                echo 'building with env variables ${MAVEN_OPTS}...'
             }
         }
         stage("test") {
