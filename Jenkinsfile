@@ -6,6 +6,9 @@ pipeline {
         environment {
             MAVEN_OPTS = '-Dhttps.protocols=TLSv1.2'
         }
+        parameters {
+            string(name:'MAVEN_OPTS',defaultValue:'-Dhttps.protocols=TLSv1.2',description:'setup the correct tls protocol for openshift')
+        }
     stages {
         stage("build") {
             steps {
