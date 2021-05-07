@@ -7,6 +7,7 @@ pipeline {
     }
             parameters {
                 string(name:'CLUSTER_NAME',defaultValue:'openshift-cluster',description:'Cluster name space')
+                string(name:'PROJECT_NAME',defaultValue:'simplest-spring-boot-hello-world',description:'Cluster project name')
             }
 
   stages {
@@ -14,7 +15,9 @@ pipeline {
       steps {
         script {
           openshift.withCluster(CLUSTER_NAME) {
+           openshift.withProject(PROJECT_NAME) {
             openshift.newApp('openshift/java:11~https://github.com/filip123go/Simplest-Spring-Boot-Hello-World.git')
+            }
           }
         }
       }
