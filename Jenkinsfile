@@ -5,7 +5,8 @@ pipeline {
     }
             parameters {
                 string(name:'MAVEN_OPTS',defaultValue:'-Dhttps.protocols=TLSv1.2',description:'setup the correct tls protocol for openshift')
-                string(name:'CLUSTER_NAME',defaultValue:'etias-sword-dev',description:'Cluster name space')
+                string(name:'CLUSTER_NAME',defaultValue:'openshift-cluster',description:'Cluster name space')
+                string(name:'PROJECT_NAME',defaultValue:'etias-sword-dev',description:'project name space')
             }
 
   stages {
