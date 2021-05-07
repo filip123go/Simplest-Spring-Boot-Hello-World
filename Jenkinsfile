@@ -1,36 +1,21 @@
 pipeline {
-    agent any
-        tools {
-            maven 'maven381'
+  agent any
+  stages {
+    stage('Build') {
+      when {
+        expression {
+          openshift.withCluster() {
+            return !openshift.selector('bc', 'mapit-spring').exists();
+          }
         }
-        environment {
-            MAVEN_OPTS = '-Dhttps.protocols=TLSv1.2'
+      }
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.newApp('--image-stream="openshift/java:11" --code=https://github.com/filip123go/Simplest-Spring-Boot-Hello-World.git')
+          }
         }
-        parameters {
-            string(name:'MAVEN_OPTS',defaultValue:'-Dhttps.protocols=TLSv1.2',description:'setup the correct tls protocol for openshift')
-        }
-    stages {
-        stage("build") {
-            steps {
-                echo 'building the application...'
-                echo "building with env variables ${MAVEN_OPTS}..."
-                sh "mvn install"
-            }
-        }
-        stage("test") {
-            when {
-                expression {
-                    env.BRANCH_NAME == 'dev'
-                }
-            }
-            steps {
-                 echo 'testing the application...'
-            }
-        }
-        stage("deploy") {
-            steps {
-                 echo 'building the deploying...'
-            }
-        }
+      }
     }
+  }
 }
