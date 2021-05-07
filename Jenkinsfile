@@ -1,5 +1,8 @@
 pipeline {
     agent any
+        tools {
+            maven 'maven381'
+        }
         environment {
             MAVEN_OPTS = '-Dhttps.protocols=TLSv1.2'
         }
@@ -8,6 +11,7 @@ pipeline {
             steps {
                 echo 'building the application...'
                 echo "building with env variables ${MAVEN_OPTS}..."
+                sh "mvn install"
             }
         }
         stage("test") {
