@@ -14,7 +14,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster(CLUSTER_NAME) {
-            openshift.newApp('--image-stream="openshift/java:11" --code=https://github.com/filip123go/Simplest-Spring-Boot-Hello-World.git')
+            openshift.newApp('openshift/java:11~https://github.com/filip123go/Simplest-Spring-Boot-Hello-World.git')
           }
         }
       }
