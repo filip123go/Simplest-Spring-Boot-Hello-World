@@ -7,7 +7,7 @@ pipeline {
     }
             parameters {
                 string(name:'CLUSTER_NAME',defaultValue:'openshift-cluster',description:'Cluster name space')
-                string(name:'PROJECT_NAME',defaultValue:'simplest-spring-boot-hello-world',description:'Cluster project name')
+                string(name:'PROJECT_NAME',defaultValue:'etias-sword-dev',description:'Cluster project name')
             }
 
   stages {
