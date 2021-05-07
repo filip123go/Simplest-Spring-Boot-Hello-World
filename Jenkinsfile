@@ -16,7 +16,7 @@ pipeline {
         script {
           openshift.withCluster(CLUSTER_NAME) {
            openshift.withProject(PROJECT_NAME) {
-            openshift.newApp('openshift/java:11~https://github.com/filip123go/Simplest-Spring-Boot-Hello-World.git')
+            openshift.newApp('--image-stream="openshift/java:11"~https://github.com/filip123go/Simplest-Spring-Boot-Hello-World.git --env=MAVEN_OPTS=-Dhttps.protocols=TLSv1.2')
             }
           }
         }
