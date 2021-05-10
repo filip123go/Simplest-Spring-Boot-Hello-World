@@ -11,6 +11,10 @@ pipeline {
             }
 
   stages {
+
+    stage('test'){
+      echo 'tesing'
+    }
     stage('Build') {
       steps {
         script {
