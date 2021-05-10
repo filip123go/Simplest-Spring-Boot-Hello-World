@@ -13,7 +13,9 @@ pipeline {
   stages {
 
     stage('test'){
+       steps {
       echo 'tesing'
+       }
     }
     stage('Build') {
       steps {
